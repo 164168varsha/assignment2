@@ -1,0 +1,234 @@
+1)SQL> SELECT e.ENAME ,e.SAL , d.DNAME
+  2  FROM EMP e ,DEPT d
+  3  WHERE SAL=(SELECT MIN(SAL) FROM EMP);
+
+ENAME             SAL DNAME
+---------- ---------- --------------
+SMITH             800 ACCOUNTING
+SMITH             800 RESEARCH
+SMITH             800 SALES
+SMITH             800 OPERATIONS
+
+2)SQL> SELECT DEPTNO, MIN(SAL) FROM EMP
+  2  GROUP BY DEPTNO
+  3  ORDER BY DEPTNO;
+
+    DEPTNO   MIN(SAL)
+---------- ----------
+        10       1300
+        20        800
+        30        950
+
+3)SQL> SELECT e.EMPNO, e.ENAME, e.JOB, e.SAL ,d.DEPTNO, d.DNAME
+  2  FROM EMP e, DEPT d
+  3  WHERE  (e.DEPTNO = d.DEPTNO) AND JOB='CLERK';
+
+     EMPNO ENAME      JOB              SAL     DEPTNO DNAME
+---------- ---------- --------- ---------- ---------- --------------
+      7934 MILLER     CLERK           1300         10 ACCOUNTING
+      7369 SMITH      CLERK            800         20 RESEARCH
+      7876 ADAMS      CLERK           1100         20 RESEARCH
+      7900 JAMES      CLERK            950         30 SALES
+
+4)SQL> SELECT EMPNO, ENAME, JOB, SAL, DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO=20
+  4  ORDER BY SAL;
+
+     EMPNO ENAME      JOB              SAL     DEPTNO
+---------- ---------- --------- ---------- ----------
+      7369 SMITH      CLERK            800         20
+      7876 ADAMS      CLERK           1100         20
+      7566 JONES      MANAGER         2975         20
+      7902 FORD       ANALYST         3000         20
+      7788 SCOTT      ANALYST         3000         20
+
+6)SQL> SELECT e.EMPNO, e.ENAME, e.DEPTNO, d.DNAME, d.LOC
+  2  FROM EMP e, DEPT d
+  3  WHERE e.DEPTNO= d.DEPTNO;
+
+     EMPNO ENAME          DEPTNO DNAME          LOC
+---------- ---------- ---------- -------------- -------------
+      7499 ALLEN              30 SALES          CHICAGO
+      7521 WARD               30 SALES          CHICAGO
+      7566 JONES              20 RESEARCH       DALLAS
+      7654 MARTIN             30 SALES          CHICAGO
+      7698 BLAKE              30 SALES          CHICAGO
+      7782 CLARK              10 ACCOUNTING     NEW YORK
+      7788 SCOTT              20 RESEARCH       DALLAS
+      7839 KING               10 ACCOUNTING     NEW YORK
+      7844 TURNER             30 SALES          CHICAGO
+      7876 ADAMS              20 RESEARCH       DALLAS
+      7900 JAMES              30 SALES          CHICAGO
+
+     EMPNO ENAME          DEPTNO DNAME          LOC
+---------- ---------- ---------- -------------- -------------
+      7902 FORD               20 RESEARCH       DALLAS
+      7934 MILLER             10 ACCOUNTING     NEW YORK
+      7369 SMITH              20 RESEARCH       DALLAS
+
+14 rows selected.
+
+
+7)SQL> SELECT d.DEPTNO, d.DNAME, e.ENAME
+  2  FROM EMP e, DEPT d
+  3  WHERE e.DEPTNO = d.DEPTNO
+  4  ORDER BY DEPTNO;
+
+    DEPTNO DNAME          ENAME
+---------- -------------- ----------
+        10 ACCOUNTING     CLARK
+        10 ACCOUNTING     KING
+        10 ACCOUNTING     MILLER
+        20 RESEARCH       JONES
+        20 RESEARCH       SCOTT
+        20 RESEARCH       FORD
+        20 RESEARCH       ADAMS
+        20 RESEARCH       SMITH
+        30 SALES          TURNER
+        30 SALES          ALLEN
+        30 SALES          WARD
+
+    DEPTNO DNAME          ENAME
+---------- -------------- ----------
+        30 SALES          JAMES
+        30 SALES          MARTIN
+        30 SALES          BLAKE
+
+14 rows selected.
+
+7)
+
+
+8)SQL> SELECT e.ENAME, e.DEPTNO, d.DNAME ,d.LOC
+  2  FROM EMP e, DEPT d
+  3  WHERE (e.DEPTNO = d.DEPTNO) AND LOC='NEW YORK';
+
+ENAME          DEPTNO DNAME          LOC
+---------- ---------- -------------- -------------
+CLARK              10 ACCOUNTING     NEW YORK
+KING               10 ACCOUNTING     NEW YORK
+MILLER             10 ACCOUNTING     NEW YORK
+
+13) SQL> CREATE TABLE ORDER_ITEM (
+  2  ID NUMERIC(4) CONSTRAINT ID_ORDER_ITEM_PK PRIMARY KEY,
+  3  ORDERID NUMERIC(4) CONSTRAINT ID_ODER_FK REFERENCES ODER(ID),
+  4  PRODUCTID NUMERIC(4) CONSTRAINT ID_PRODUCT_FK REFERENCES PRODUCT(ID),
+  5  UNITPRICE NUMERIC(10,2),
+  6  QUANTITY NUMERIC(4)
+  7  );
+
+Table created.
+SQL> INSERT INTO ODER VALUES ( 01,'07-APR-2012',7369);
+
+1 row created.
+
+SQL> INSERT INTO ODER VALUES ( 02,'02-OCT-2011',7900);
+
+1 row created.
+
+SQL> INSERT INTO ODER VALUES ( 03,'23-NOV-2015',7934);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES (01,'EASY-TRADING');
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES (02,'BANK-ANYWHERE');
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES (03,'TRIP-MANAGER');
+
+1 row created.
+
+SQL> INSERT INTO ORDER_ITEM VALUES (01,01,01,20,800);
+
+1 row created.
+
+SQL> INSERT INTO ORDER_ITEM VALUES (02,02,02,30,950);
+
+1 row created.
+
+SQL> INSERT INTO ORDER_ITEM VALUES (03,03,03,10,1300);
+INSERT INTO ORDER_ITEM VALUES (03,03,03,10,1300)
+
+SQL> INSERT INTO ORDER_ITEM VALUES (03,03,03,10,1300);
+
+1 row created.
+
+
+
+
+SQL> SELECT ORDER_NUMBER AS ORDER_NO, ORDER_DATE, PRODUCTNAME, QUANTITY, UNITPRI
+CE FROM ODER, ORDER_ITEM, PRODUCT
+  2  WHERE ODER.ID=ORDER_ITEM.ORDERID AND
+  3  ORDER_ITEM.PRODUCTID = PRODUCT.ID;
+
+  ORDER_NO ORDER_DAT PRODUCTNAME            QUANTITY  UNITPRICE
+---------- --------- -------------------- ---------- ----------
+      7369 07-APR-12 EASY-TRADING                800         20
+      7900 02-OCT-11 BANK-ANYWHERE               950         30
+      7934 23-NOV-15 TRIP-MANAGER                130         10
+
+
+
+
+14)SQL> SELECT MIN(SAL) FROM EMP
+  2  WHERE SAL NOT IN (SELECT MIN(SAL) FROM EMP);
+
+  MIN(SAL)
+----------
+       950
+
+
+
+15)SQL> SELECT  *FROM
+  2   (
+  3      SELECT *FROM emp
+  4      ORDER BY Sal desc
+  5   )
+  6  WHERE rownum <= 3
+  7  ORDER BY Sal DESC ;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7839 KING       PRESIDENT            17-NOV-81       5000
+        10
+
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000
+        20
+
+      7902 FORD       ANALYST         7566 03-DEC-81       3000
+        20
+
+
+16)SQL> SELECT DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP INTERSECT SELECT DEPTNO FROM DEPT);
+
+
+    DEPTNO
+----------
+        20
+        30
+        30
+        20
+        30
+        30
+        10
+        20
+        10
+        30
+        20
+
+    DEPTNO
+----------
+        30
+        20
+        10
+
+14 rows selected.
