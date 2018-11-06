@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<body>
+<div >
+   <video align :"center" width="400" height="200" controls autoplay>
+	<source src ="C:\varsha\html\html5.ogg"  type="video/ogg" >
+	<source src ="C:\varsha\html\html5.mp4"  type="video/mp4" >
+ </video>
+<br>
+<br>  
+<button type="button" onclick="mute()"> Mute </button>
+<button type="button" onclick="unmute()"> Unmute </button>
+<button type="button" onclick="pause()"> pause </button>
+<button type="button" onclick="play()"> play </button>
+<button type="button" onclick="fullscreen()"> fullscreen </button>
+</div>
+<script>
+var myVideo = document.getElementById("html5"); 
+function pause(){
+myVideo.pause();
+}
+function fullscreen(){
+myVideo.width=1000;
+myVideo.height=1000;
+}
+</script>
+</body>
+</html>
