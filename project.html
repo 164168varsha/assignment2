@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<style>
+.container{
+width :420px;
+height :350px;
+background :#f0f0f0;
+border-sizing :border-box;
+top:50%;
+color:#000;
+ margin: 8px 200px;
+position :absol;ute;
+transform :Translate(-50%,-50%);
+
+}
+	input[type=text], input[type=password] {
+    font-family:times new roman ,bold,16;
+    width: 50%;
+    padding: 12px 10px;
+    width :300px;
+    display: inline-block;
+	margin :15px , 20px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+}
+button{
+	background-color : MediumSeaGreen;
+	width : 300px;
+	height:40px;
+ 	margin: 5px 20px;
+	
+}
+button:hover{
+opacity:0.8;
+}
+label{
+	font-size : 18px;
+ margin: 5px 20px;
+
+}
+#one
+	{
+	font-size : 14px;
+}
+#two{
+width : 70px;
+}
+
+
+</style>
+<body>
+<form action=>
+<div class=container>
+ <label for="uname"><b>Username</b></label><br/>
+      <input type="text" placeholder="Enter Username" name="uname" required><br/>
+      <label for="password"><b>Password</b></label><br/>
+      <input type="password" placeholder="Enter Password" name="psw" required><br/>
+        
+      <button type="submit">Login</button><br/>
+       
+      <label id="one">
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+       <button id ="two" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+</form>
+  <div class="class1"><h5>New to this?</h5></div>
+        <span id="id1" class="class2"><span class="a-button-inner"><a id="createAccountSubmit" tabindex="6" href="www.google.com"  role="button">
+          Create your  account
+        </a></span></span>
+      
+    
+  
+</div>
+
+    
+
+      
+
+</body>
+</html>
