@@ -1,0 +1,10 @@
+https://www.devglan.com/angular/material-sidenav-example
+
+------------------------------------------------------------------
+
+https://material.angular.io/components/sidenav/overview#specifying-the-main-and-side-content
+-----------------------------------------------------------------------
+https://stackoverflow.com/questions/33021659/sidebar-navigation-and-display-content-on-right-side
+
+----------------------------------------------------------------------
+https://www.devglan.com/angular/angular-hide-sidenav-login-page
