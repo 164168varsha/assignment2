@@ -1,0 +1,15 @@
+docker compose (creating multi containers and microservices) 
+============================================
+
+With Compose, we define a multi-container application in a single file, then spin our application up in a single command which does everything that needs to be done to get it running.
+
+The main function of Docker Compose is the creation of microservice architecture, meaning the containers and the links between them.
+
+Compared with docker commands, the docker-compose commands are not only similar, but they also behave like docker counterparts. The only difference is that docker-compose commands affect the entire multi-container architecture defined in the docker-compose.yml configuration file and not just a single container.
+
+There are three steps to use Docker Compose:
+===============================================
+
+Define each service in a Dockerfile.
+Define the services and their relation to each other in the docker-compose.yml file.
+Use # docker-compose up to start the system.

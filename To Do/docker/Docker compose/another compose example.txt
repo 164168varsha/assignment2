@@ -1,0 +1,33 @@
+version: '2' 
+
+services:    
+  proxy:        
+      build: ./proxy        
+      networks:             
+          - front    
+  app:        
+      build: ./app        
+      networks:            
+         # you may set custom IP addresses            
+         front:                
+             ipv4_address: 192.168.0.161                 
+             ipv6_address: "2001:3998:3929::10"
+         - back    
+  db:          
+      image: postgres        
+      networks:            
+          - back 
+networks:    
+   front:        
+       driver: bridge        
+       driver_opts:            
+          com.docker.network.enable_ipv6: "true"        
+       ipam:            
+          driver: default            
+          config:                
+              - subnet: 192.168.0.0/24                
+              gateway: 192.168.0.3                
+              - subnet: "2001:3998:3929::/64"                
+              gateway: "2001:3998:3929::1"    
+   back:        
+       driver: custom-driver-1
